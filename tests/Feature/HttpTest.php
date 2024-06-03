@@ -37,4 +37,13 @@ class HttpTest extends TestCase
         $json = $response->json();
         self::assertTrue($json['success']);
     }
+
+    public function testQueryParameter()
+    {
+        $response = Http::withQueryParameters([
+            'page' => 1,
+            'limit' => 10
+        ])->get("https://enhmm1ik062ud.x.pipedream.net");
+        self::assertTrue($response->ok());
+    }
 }
