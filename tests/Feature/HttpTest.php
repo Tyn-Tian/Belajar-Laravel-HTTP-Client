@@ -115,4 +115,15 @@ class HttpTest extends TestCase
 
         self::assertTrue($response->ok());
     }
+
+    public function testRetry()
+    {
+        $response = Http::timeout(2)->retry(5, 1000)->asJson()
+            ->post("https://enhmm1ik062ud.x.pipedream.net", [
+                "username" => "admin",
+                "password" => "123456"
+            ]);
+
+        self::assertTrue($response->ok());
+    }
 }
