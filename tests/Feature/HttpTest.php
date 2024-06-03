@@ -93,4 +93,15 @@ class HttpTest extends TestCase
             ]);
         self::assertTrue($response->ok());
     }
+
+    public function testJson()
+    {
+        $response = Http::asJson()
+            ->post("https://enhmm1ik062ud.x.pipedream.net", [
+                "username" => "admin",
+                "password" => "123456"
+            ]);
+
+        self::assertTrue($response->ok());
+    }
 }
